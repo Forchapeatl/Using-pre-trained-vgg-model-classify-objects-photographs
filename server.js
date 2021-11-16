@@ -1,5 +1,7 @@
 var express = require('express');
 var multer  = require('multer');
+const { exec } = require("child_process");
+
 var fs  = require('fs');
 
 var app = express();
@@ -27,6 +29,11 @@ app.post('/upload', function (req, res, next) {
         if (err) {
             return res.end("Something went wrong:(");
         }
+                exec("python python.py", (error, stdout, stderr) => {
+            if (error) {
+                console.log(`error: ${error.message}`);
+                       }
+                }
         res.end("Upload completed.");
     });
 })
