@@ -12,4 +12,4 @@ arr2=np.expand_dims(arr2,axis=0)
 arr2 = image.img_toarray(img2)
 arr2 = vgg16.preprocess_input(arr2)
 preds2 = model.predict(arr2)
-vgg16.decode_predictions(preds2,top=5) > SomeFile.txt  
+vgg16.decode_predictions(preds2,top=5) > somefile.txt  
