@@ -1,6 +1,7 @@
 var express = require('express');
 var multer  = require('multer');
 const { exec } = require("child_process");
+var path = require('path');
 
 var fs  = require('fs');
 
@@ -34,7 +35,13 @@ app.post('/upload', function (req, res, next) {
                 console.log(`error: ${error.message}`);
                        }
                 }
-        res.end("Upload completed.");
+                 res.sendFile('somefile.txt', options, function (err) {
+                if (err) {
+                    next(err);
+                } else {
+                    console.log("Sent:");
+                }
+            });
     });
 })
 
